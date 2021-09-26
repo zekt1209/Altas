@@ -30,6 +30,33 @@ export default class altas extends Component {
     }
   }
 
+  uploadImageToServer = async () => {
+    const response = await fetch(this.state.fileUri);
+    const blob = await response.blob();
+    var reader = new FileReader();
+    reader.onload = () => {
+    
+    var InsertAPI = 'http://zekt1209.000webhostapp.com/upload.php';
+    console.log(reader.result);
+    var Data={img:reader.result};
+    var headers={
+    'Accept':'application/json',
+    'Content-Type':'application.json'
+    }
+    fetch(InsertAPI,{
+    method:'POST',
+    headers:headers,
+    body:JSON.stringify(Data),
+    }).then((response)=>response.json()).then((response)=>{
+    console.log("server "+response)
+    })
+    .catch(err=>{
+    console.log(err);
+    
+    })
+    }
+    reader.readAsDataURL(blob);
+    }
 
   render() {
 
@@ -49,6 +76,7 @@ export default class altas extends Component {
           });
           var finalArray = array[0][0];
           this.setState({fileUri: finalArray.uri});
+          this.uploadImageToServer();
           // console.log(finalArray.uri);
         },
       );
