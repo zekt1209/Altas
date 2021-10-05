@@ -1,6 +1,6 @@
 import {isTemplateElement} from '@babel/types';
 import React, {Component} from 'react';
-import {View, Text, FlatList, Dimensions} from 'react-native';
+import {View, Text, FlatList, Dimensions, img} from 'react-native';
 
 export default class listas extends Component {
   constructor(props) {
@@ -31,11 +31,12 @@ export default class listas extends Component {
   render() {
     return (
       <View>
+        
         <FlatList style={{marginTop: 10}} data={this.state.datos} 
         renderItem=
         {({item}) => (
           <View style={{justifyContent: 'center', marginBottom: 10}}>
-            <Text
+            <Text // Mostrar el Nombre
               style={{
                 backgroundColor: 'blue',
                 color: 'white',
@@ -44,10 +45,44 @@ export default class listas extends Component {
               }}>
             {item.Nombre} 
             </Text>
+
+            <Text // Mostrar el codigo
+              style={{
+                backgroundColor: 'blue',
+                color: 'white',
+                padding: 10,
+                width: Dimensions.get('window').width,
+              }}>
+            {item.Codigo} 
+            </Text>
+
+            <Text // Mostrar el centro
+              style={{
+                backgroundColor: 'blue',
+                color: 'white',
+                padding: 10,
+                width: Dimensions.get('window').width,
+              }}>
+            {item.Centro} 
+            </Text>
+
+            <Text // Mostrar el Imagen
+              style={{
+                backgroundColor: 'blue',
+                color: 'white',
+                padding: 10,
+                width: Dimensions.get('window').width,
+              }}>
+                {item.Imagen}
+            </Text>
+            
+
           </View>
+
         )}
         keyExtractor={item => item.Codigo}
         />
+
       </View>
     );
   }
