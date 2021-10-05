@@ -1,6 +1,6 @@
 import {isTemplateElement} from '@babel/types';
 import React, {Component} from 'react';
-import {View, Text, FlatList, Dimensions, img} from 'react-native';
+import {View, Text, FlatList, Dimensions, Image} from 'react-native';
 
 export default class listas extends Component {
   constructor(props) {
@@ -66,15 +66,8 @@ export default class listas extends Component {
             {item.Centro} 
             </Text>
 
-            <Text // Mostrar el Imagen
-              style={{
-                backgroundColor: 'blue',
-                color: 'white',
-                padding: 10,
-                width: Dimensions.get('window').width,
-              }}>
-                {item.Imagen}
-            </Text>
+            <Image source={{uri: item.Imagen}}
+       style={{width: 200, height: 200}} />
             
 
           </View>
