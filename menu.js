@@ -6,6 +6,7 @@ import ALTAS from './altas';
 import LISTAS from './listas';
 import listas from './listas';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import BUSQUEDA from './busqueda';
 
 function SettingsScreen() {
   return (
@@ -32,6 +33,8 @@ export default function menu() {
                 : 'person-add-outline';
             } else if (route.name === 'Listas') {
               iconName = focused ? 'list' : 'list-outline';
+            }else if (route.name === 'busqueda') {
+              iconName = focused ? 'body' : 'body-outline';
             }
             
             // You can return any component that you like here!
@@ -43,6 +46,8 @@ export default function menu() {
       >
         <Tab.Screen name="Altas" component={ALTAS} />
         <Tab.Screen name="Listas" component={LISTAS} />
+        <Tab.Screen name="busqueda" component={BUSQUEDA} />
+
       </Tab.Navigator>
     </NavigationContainer>
   );

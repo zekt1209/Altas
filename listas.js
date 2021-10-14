@@ -65,7 +65,7 @@ export default class listas extends Component {
               }}>
             {item.Centro} 
             </Text>
-
+              
             <Image source={{uri: item.Imagen}}
        style={{width: 200, height: 200}} />
             
