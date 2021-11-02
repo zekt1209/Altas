@@ -69,7 +69,6 @@ export default class listas extends Component {
             <Image source={{uri: item.Imagen}}
        style={{width: 200, height: 200}} />
             
-
           </View>
 
         )}
