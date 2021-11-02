@@ -140,7 +140,7 @@ export default class cambios extends Component {
       if (this.state.refreshing){
           return (
         <View>
-            <Text> cambios </Text>
+            <Text style={styles.h1}> Modificar </Text>
 
             <Input
                 placeholder="Codigo"
@@ -235,5 +235,10 @@ const styles = StyleSheet.create({
       marginTop: 20,
       width: 100,
       marginLeft: 150,
+    },
+    h1:{
+      fontSize: 22,
+      fontWeight:'400', 
+      textAlign:'center',
     },
   });

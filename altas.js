@@ -3,9 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-  Picker,
   ScrollView,
   TouchableOpacity,
+  Picker
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Input, Image, Button} from 'react-native-elements';
@@ -17,8 +17,19 @@ export default class altas extends Component {
     this.state = {
       selectedValue: '',
       fileUri: '',
+      nombre: '',
+      password: '',
+      codigo: '',
+      centro: '',
+      imagen: '',
+      fileUri: '',
+      rutai: '',
     };
   }
+
+  updateCentro = centro => {
+    this.setState({centro: centro});
+  };
 
   renderFileUri() {
     if (this.state.fileUri) {
@@ -82,15 +93,32 @@ export default class altas extends Component {
       );
     };
 
+    const AltaDatos = () => {
+      var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function () {
+       if (this.readyState == 4 && this.status == 200) {
+         console.log(xhttp.responseText);
+       }
+     };
+     xhttp.open(
+       'GET',
+       'https://zekt1209.000webhostapp.com/auth.php?nom='+ this.state.nombre + '&codigo=' + this.state.codigo + '&pass=' + this.state.password + '&centro=' + this.state.centro + '&imagen=' + this.state.fileUri,
+       true
+     );
+     xhttp.send(); 
+     this.setState({refreshing: true});
+    }
+
     return (
       <View>
         <ScrollView>
-          <Text style={styles.titulo}>¡ Altas ! </Text>
+          <Text style={styles.titulo}> Altas  </Text>
 
           <View style={styles.Alta}>
             <Input
               placeholder="Nombre"
               leftIcon={<Icon name="user" size={24} color="black" />}
+              onChangeText={nombre => this.setState({nombre})}
             />
           </View>
 
@@ -98,6 +126,7 @@ export default class altas extends Component {
             <Input
               placeholder="Codigo"
               leftIcon={<Icon name="keyboard-o" size={24} color="black" />}
+              onChangeText={codigo => this.setState({codigo})}
             />
           </View>
 
@@ -106,6 +135,7 @@ export default class altas extends Component {
               placeholder="Password"
               leftIcon={<Icon name="lock" size={24} color="black" />}
               secureTextEntry={true}
+              onChangeText={password => this.setState({password})}
             />
           </View>
 
@@ -115,6 +145,7 @@ export default class altas extends Component {
             </Text>
             <Picker
               selectedValue={this.state.selectedValue}
+              onValueChange={this.updateCentro}
               style={{height: 50, width: 150, marginLeft: 20}}>
               <Picker.Item label="CUCSH" value="CUCSH" />
               <Picker.Item label="CUCEA" value="CUCEA" />
@@ -135,6 +166,7 @@ export default class altas extends Component {
             <Button
               icon={<Icon name="user-plus" size={15} color="white" />}
               title=" Altas"
+              onPress={AltaDatos}
             />
           </View>
         </ScrollView>
