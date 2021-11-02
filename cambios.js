@@ -102,11 +102,11 @@ export default class cambios extends Component {
           if (this.readyState == 4 && this.status == 200) {
             console.log(xhttp.responseText);
             var temp = JSON.parse(xhttp.responseText);
-            _this.setState({ nombre: temp[0]['nombre'] });
-            _this.setState({ centro: temp[0]['centro'] });
-            _this.setState({ fileUri: temp[0]['imagen'] });
-            _this.setState({ rutai: temp[0]['imagen'] });
-            _this.setState({ nombreP: temp[0]['nombre'] });
+            _this.setState({ nombre: temp[0]['Nombre'] });
+            _this.setState({ centro: temp[0]['Centro'] });
+            _this.setState({ fileUri: temp[0]['Imagen'] });
+            _this.setState({ rutai: temp[0]['Imagen'] });
+            _this.setState({ nombreP: temp[0]['Nombre'] });
           }
         };
         xhttp.open(
